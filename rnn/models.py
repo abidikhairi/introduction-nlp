@@ -1,6 +1,11 @@
 from torch import nn
 
 
+label_names = {
+	0: "negative",
+	1: "positive"
+}
+
 class RNNModel(nn.Module):
 	def __init__(self, vocab_size, embedding_dim=128, hidden_dim=16) -> None:
 		super().__init__()
@@ -22,3 +27,11 @@ class RNNModel(nn.Module):
 		scores = self.linear(rnn_out[-1])
 
 		return self.sigmoid(scores)
+
+	def inference(self, seq):
+		score = self(seq)
+		label = (score > 0.5).long()[0].squeeze().item()
+		label_name = label_names[label]
+		confidence = score[0].squeeze().item()
+		
+		return label_name, confidence

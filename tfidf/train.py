@@ -32,7 +32,7 @@ def train_lsi_features(data):
     acc = accuracy_score(y_test, y_hat)
     cm = confusion_matrix(y_test, y_hat)
 
-    print(f"LSI + SVM classifier: {acc * 100:.2f}")
+    print(f"LSI + SVM classifier: {acc * 100:.2f} %")
 
     cmd = ConfusionMatrixDisplay(cm)
 
@@ -58,7 +58,7 @@ def train_tfidf_features(data):
     acc = accuracy_score(y_test, y_hat)
     cm = confusion_matrix(y_test, y_hat)
 
-    print(f"TF-IDF + SVM classifier: {acc * 100:.2f}")
+    print(f"TF-IDF + SVM classifier: {acc * 100:.2f} %")
 
     cmd = ConfusionMatrixDisplay(cm)
 

@@ -8,7 +8,7 @@ def prepare_sequence(sentence, word2idx):
     tknzr = TweetTokenizer(preserve_case=False)
     tokens = tknzr.tokenize(sentence)
 
-    seq = [word2idx[token] for token in tokens]
+    seq = [word2idx[token] for token in tokens if token in word2idx]
 
     return torch.tensor(seq, dtype=torch.long)
 
